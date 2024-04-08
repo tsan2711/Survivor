@@ -17,6 +17,11 @@ public class InventorySystem : MonoBehaviour
     private GameObject itemToAdd;
     private GameObject whatSlotToEquip;
 
+    // Alert
+    public GameObject alertBoard;
+    public Text pickPopText;
+    public Image pickPopImage;
+
     private void Awake()
     {
         isInventoryOpen = false;
@@ -62,23 +67,52 @@ public class InventorySystem : MonoBehaviour
         whatSlotToEquip = findNextEmptySlot();
         itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
         itemToAdd.transform.SetParent(whatSlotToEquip.transform);
-        itemToAdd.transform.localScale = new Vector3(1, 1, 1);
+        if(itemName == "Mushroom")
+        {
+            itemToAdd.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (itemName == "Stone" || itemName == "Stick" || itemName == "Sword" || itemName == "Axe" || itemName == "Bow")
+        {
+            itemToAdd.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+
+        }
         itemList.Add(itemName);
+        controlAlertBoard(itemName, itemToAdd.GetComponent<Image>().sprite);
+
+        // Appearing an Alert
+
+
+    }
+
+    private void controlAlertBoard(string itemName, Sprite itemToAdd)
+    {
+        alertBoard.SetActive(true);
+        //pickPopImage.gameObject.SetActive(true);
+        //pickPopText.gameObject.SetActive(true);
+        pickPopText.text = "Pick " + itemName;
+        pickPopImage.sprite = itemToAdd;
+        StartCoroutine(onOffAlertBoard());
+    }
+
+    IEnumerator onOffAlertBoard()
+    {
+        yield return new WaitForSeconds(2);
+        alertBoard.SetActive(false);
+        //pickPopImage.gameObject.SetActive(false);
+        //pickPopText.gameObject.SetActive(false);
     }
 
 
     public bool checkIsInventoryFull()
     {
-        bool check = true;
         foreach(GameObject slot in slotList)
         {
             if(slot.transform.childCount == 0)
             {
-                check = false;
+                return false;
             }
         }
-
-        return check;
+        return true;
     }
 
     private GameObject findNextEmptySlot()
@@ -92,5 +126,37 @@ public class InventorySystem : MonoBehaviour
         }
 
         return new GameObject();
+    }
+
+    public void deleteMaterialFromInventory(string materialName, int materialAmount)
+    {
+        int counterMaterial = materialAmount;
+        Debug.Log(counterMaterial);
+        for (int i = slotList.Count - 1; i >= 0; i--)
+        {
+            if (slotList[i].transform.childCount > 0)
+            {
+                if (slotList[i].transform.GetChild(0).name == (materialName + "(Clone)") && counterMaterial != 0)
+                {
+                    Debug.Log(slotList[i].transform.GetChild(0).name);
+                    Destroy(slotList[i].transform.GetChild(0).gameObject);
+                    counterMaterial--;
+                }
+            }
+        }
+    }
+
+    public void reCalculateList()
+    {
+        itemList.Clear();
+
+        foreach(GameObject slot in slotList)
+        {
+            if(slot.transform.childCount > 0)
+            {
+                string name = slot.transform.GetChild(0).name.Replace("(Clone)", "");
+                itemList.Add(name);
+            }
+        }
     }
 }

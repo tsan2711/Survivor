@@ -7,6 +7,9 @@ public class SelectionManager : MonoBehaviour
 {
     public static SelectionManager Instance { get; private set; }
     public bool onTarget;
+    public GameObject handIcon;
+    public GameObject circleIcon;
+
 
 
     public GameObject interaction_info_UI;
@@ -27,7 +30,7 @@ public class SelectionManager : MonoBehaviour
 
         isPlayerInRange = false;
         interaction_text = interaction_info_UI.GetComponent<Text>();
-
+        handIcon.SetActive(false);
         
     }
 
@@ -49,11 +52,23 @@ public class SelectionManager : MonoBehaviour
                 interaction_text.text = interactable.getName();
                 interaction_info_UI.SetActive(true);
                 //onTarget = true;
+                if (interactable.gameObject.CompareTag("PickUpItem"))
+                {
+                    handIcon.SetActive(true);
+                    circleIcon.SetActive(false);
+
+                } else
+                {
+                    handIcon.SetActive(false);
+                    circleIcon.SetActive(true);
+                }
 
             }
             else
             {
                 interaction_info_UI.SetActive(false);
+                circleIcon.SetActive(true);
+                handIcon.SetActive(false);
                 isPlayerInRange = false;
                 //onTarget = false;
             }

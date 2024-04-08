@@ -521,7 +521,6 @@ GameObject:
   - component: {fileID: 8125364844635206562}
   - component: {fileID: 9212262982259646307}
   - component: {fileID: 3809663451714962801}
-  - component: {fileID: -5645858068030868848}
   - component: {fileID: 4735582259368366003}
   m_Layer: 0
   m_Name: Medium_Rabbit
@@ -631,20 +630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
---- !u!114 &-5645858068030868848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4141484462338538439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6872b3639a06d4e9ea2d7c438e9acecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Rabbit
-  playerInRange: 0
 --- !u!65 &4735582259368366003
 BoxCollider:
   m_ObjectHideFlags: 0
