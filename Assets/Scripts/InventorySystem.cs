@@ -81,14 +81,12 @@ public class InventorySystem : MonoBehaviour
 
         // Appearing an Alert
 
-
+        CraftingSystem.Instance.refreshNeededMaterials();
     }
 
     private void controlAlertBoard(string itemName, Sprite itemToAdd)
     {
         alertBoard.SetActive(true);
-        //pickPopImage.gameObject.SetActive(true);
-        //pickPopText.gameObject.SetActive(true);
         pickPopText.text = "Pick " + itemName;
         pickPopImage.sprite = itemToAdd;
         StartCoroutine(onOffAlertBoard());
@@ -98,8 +96,6 @@ public class InventorySystem : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         alertBoard.SetActive(false);
-        //pickPopImage.gameObject.SetActive(false);
-        //pickPopText.gameObject.SetActive(false);
     }
 
 
@@ -131,14 +127,12 @@ public class InventorySystem : MonoBehaviour
     public void deleteMaterialFromInventory(string materialName, int materialAmount)
     {
         int counterMaterial = materialAmount;
-        Debug.Log(counterMaterial);
         for (int i = slotList.Count - 1; i >= 0; i--)
         {
             if (slotList[i].transform.childCount > 0)
             {
                 if (slotList[i].transform.GetChild(0).name == (materialName + "(Clone)") && counterMaterial != 0)
                 {
-                    Debug.Log(slotList[i].transform.GetChild(0).name);
                     Destroy(slotList[i].transform.GetChild(0).gameObject);
                     counterMaterial--;
                 }
@@ -149,7 +143,6 @@ public class InventorySystem : MonoBehaviour
     public void reCalculateList()
     {
         itemList.Clear();
-
         foreach(GameObject slot in slotList)
         {
             if(slot.transform.childCount > 0)
@@ -157,6 +150,10 @@ public class InventorySystem : MonoBehaviour
                 string name = slot.transform.GetChild(0).name.Replace("(Clone)", "");
                 itemList.Add(name);
             }
+        }
+        foreach(string name in itemList)
+        {
+            Debug.Log(name + " haha");
         }
     }
 }

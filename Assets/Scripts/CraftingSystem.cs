@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CraftingSystem : MonoBehaviour
 {
+    public static CraftingSystem Instance { get; private set; }
+
 
     public GameObject craftingScreenUI;
     public GameObject toolScreenUI;
@@ -33,6 +35,17 @@ public class CraftingSystem : MonoBehaviour
     private Blueprint bowBP = new Blueprint("Bow", 3, "Stone", 2, "Stick", 2, "String", 2);
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if(Instance != this && Instance != null)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         toolBtn = craftingScreenUI.transform.Find("Tool_btn").GetComponent<Button>();
@@ -61,7 +74,7 @@ public class CraftingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        refreshNeededMaterials();
+        //refreshNeededMaterials();
 
         if (InventorySystem.Instance.isInventoryOpen)
         {
@@ -106,7 +119,6 @@ public class CraftingSystem : MonoBehaviour
         }
         else if (blueprintToCraft.numOfMaterial == 2)
         {
-            Debug.Log("kaka");
             InventorySystem.Instance.deleteMaterialFromInventory(blueprintToCraft.material1, blueprintToCraft.materialAmount1);
             InventorySystem.Instance.deleteMaterialFromInventory(blueprintToCraft.material2, blueprintToCraft.materialAmount2);
         }
@@ -116,15 +128,20 @@ public class CraftingSystem : MonoBehaviour
             InventorySystem.Instance.deleteMaterialFromInventory(blueprintToCraft.material2, blueprintToCraft.materialAmount2);
             InventorySystem.Instance.deleteMaterialFromInventory(blueprintToCraft.material3, blueprintToCraft.materialAmount3);
         }
-
+        StartCoroutine(waitForMaterialRemove());
         // After crafting, recalculate list item ( string )
+    }
+
+    IEnumerator waitForMaterialRemove()
+    {
+        yield return new WaitForSeconds(.3f);
         InventorySystem.Instance.reCalculateList();
         refreshNeededMaterials();
+
     }
 
 
-
-    private void refreshNeededMaterials()
+    public void refreshNeededMaterials()
     {
         int stoneCount = 0;
         int stickCount = 0;
@@ -139,6 +156,9 @@ public class CraftingSystem : MonoBehaviour
                     break;
                 case "Stick":
                     stickCount++;
+                    break;
+                case "String":
+                    stringCount++;
                     break;
             }
         }
