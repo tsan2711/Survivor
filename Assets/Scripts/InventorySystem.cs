@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
+    const float IMAGEINVENTORY_SCALE = 0.7f;
+
     public static InventorySystem Instance { get; set; }
     public Canvas referenceInventoryCanvas;
 
@@ -73,7 +75,7 @@ public class InventorySystem : MonoBehaviour
         }
         else if (itemName == "Stone" || itemName == "Stick" || itemName == "Sword" || itemName == "Axe" || itemName == "Bow")
         {
-            itemToAdd.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+            itemToAdd.transform.localScale = new Vector3(IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE);
 
         }
         itemList.Add(itemName);
