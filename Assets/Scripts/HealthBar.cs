@@ -6,10 +6,6 @@ using UnityEngine;
 class HealthBar : StatusBar
 {
     public static HealthBar Instance;
-
-
-
-
     private void Awake()
     {
         if (Instance != this && Instance != null)
@@ -22,13 +18,6 @@ class HealthBar : StatusBar
         }
         slider = GetComponent<Slider>();
     }
-    private void Start()
-    {
-        Initalize();
-    }
-
-
-
 
     public override void set(ref int currentHealth, int amount)
     {
@@ -60,18 +49,18 @@ class HealthBar : StatusBar
         {
             current = getMaxValue();
         }
-            updateSlider(current);
+        updateSlider(current);
         setStatusText(current);
     }
 
     public override void updateSlider(int current)
     {
-        slider.value = (float)current / max;
+        slider.value = (float) current / getMaxValue();
     }
 
     public override void setStatusText(int current)
     {
-        stateText.text = current + "/" + max;
+        stateText.text = current + "/" + getMaxValue();
     }
     public override void setMaxValue(int amount)
     {

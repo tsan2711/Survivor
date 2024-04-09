@@ -16,9 +16,5 @@ abstract class StatusBar : MonoBehaviour
     public abstract void setStatusText(int current);
     public abstract void setMaxValue(int amount);
     public abstract int getMaxValue();
-    protected void Initalize()
-    {
-        updateSlider(max);
-        setStatusText(max);
-    }
+
 }

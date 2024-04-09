@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7740879285855520819}
   - component: {fileID: 5205189918586262997}
   - component: {fileID: 1670148747179316521}
+  - component: {fileID: 2775584896533419064}
   m_Layer: 5
   m_Name: Axe
   m_TagString: Untagged
@@ -75,3 +76,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2775584896533419064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346363944079621779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6eeefc442194b0bbe7dda394a23202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  functionalityText: {fileID: 0}
+  name: Axe
+  description: a tool typically used for chopping wood, usually a steel blade attached
+    at a right angle to a wooden handle.
+  functionality: chope wood
+  consumable: 0

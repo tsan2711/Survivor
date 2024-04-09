@@ -19,10 +19,7 @@ class CaloriesBar : StatusBar
         }
         slider = GetComponent<Slider>();
     }
-    private void Start()
-    {
-        Initalize();
-    }
+
     public override void set(ref int currentCalories, int amount)
     {
         currentCalories = amount;
@@ -58,12 +55,13 @@ class CaloriesBar : StatusBar
     }
     public override void updateSlider(int current)
     {
+        Debug.Log(getMaxValue());
         slider.value = (float)current / max;
     }
 
     public override void setStatusText(int current)
     {
-        stateText.text = current + "/" + max;
+        stateText.text = current + "/" + getMaxValue();
     }
     public override void setMaxValue(int amount)
     {

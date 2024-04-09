@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
+    public static PlayerState Instance;
     // Health field
     [SerializeField]
     private int maxHealth = 100;
@@ -29,17 +30,26 @@ public class PlayerState : MonoBehaviour
 
     void Start()
     {
+        if (Instance != this && Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
         setInitialValue();
     }
 
     private void setInitialValue()
     {
-        HealthBar.Instance.set(ref currentHealth, maxHealth);
-        CaloriesBar.Instance.set(ref currentCalories, maxCalories);
-        HydrationBar.Instance.set(ref currentHydrationPercent, maxHydrationPercent);
         HealthBar.Instance.setMaxValue(maxHealth);
         CaloriesBar.Instance.setMaxValue(maxCalories);
         HydrationBar.Instance.setMaxValue(maxHydrationPercent);
+
+        HealthBar.Instance.set(ref currentHealth, maxHealth);
+        CaloriesBar.Instance.set(ref currentCalories, maxCalories);
+        HydrationBar.Instance.set(ref currentHydrationPercent, maxHydrationPercent);
     }
 
     void Update()
@@ -66,6 +76,34 @@ public class PlayerState : MonoBehaviour
             yield return new WaitForSeconds(3);
             HydrationBar.Instance.decrease(ref currentHydrationPercent, 10);
         }
+    }
+
+    public int getHealth()
+    {
+        return currentHealth;
+    }
+    public int getCalories()
+    {
+        return currentCalories;
+    }
+    public int getHydrationPercent()
+    {
+        return currentHydrationPercent;
+    }
+
+    public void addHealth(int health)
+    {
+        HealthBar.Instance.increase(ref currentHealth, health);
+    }
+    public void addCalories(int calories)
+    {
+        CaloriesBar.Instance.increase(ref currentCalories, calories);
+
+    }
+    public void addHydrationPercent(int hydration)
+    {
+        HydrationBar.Instance.increase(ref currentHydrationPercent, hydration);
+
     }
 
 }

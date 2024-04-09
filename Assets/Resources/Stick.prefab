@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3488708066371367570}
   - component: {fileID: 942508408902266037}
   - component: {fileID: -4810495503272299534}
+  - component: {fileID: -4060311290889357918}
   m_Layer: 5
   m_Name: Stick
   m_TagString: Untagged
@@ -102,3 +103,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+--- !u!114 &-4060311290889357918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596901445125008541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6eeefc442194b0bbe7dda394a23202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  functionalityText: {fileID: 0}
+  name: Stick
+  description: A thin piece of wood that has fallen or been cut from a tree.
+  functionality: Crafting
+  isConsumable: 1
+  healthEffect: 10
+  caloriesEffect: 5
+  hydrationEffect: 0

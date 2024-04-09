@@ -13,6 +13,13 @@ public class InventorySystem : MonoBehaviour
     public GameObject InventoryScreenUI;
     public bool isInventoryOpen;
 
+    // Item info board
+    public GameObject itemBoard;
+    public Text itemName;
+    public Text itemDescription;
+    public Text itemFunctionality;
+    //
+
     public List<GameObject> slotList = new List<GameObject>();
     public List<string> itemList = new List<string>();
 
@@ -135,7 +142,7 @@ public class InventorySystem : MonoBehaviour
             {
                 if (slotList[i].transform.GetChild(0).name == (materialName + "(Clone)") && counterMaterial != 0)
                 {
-                    Destroy(slotList[i].transform.GetChild(0).gameObject);
+                    DestroyImmediate(slotList[i].transform.GetChild(0).gameObject);
                     counterMaterial--;
                 }
             }
@@ -153,9 +160,6 @@ public class InventorySystem : MonoBehaviour
                 itemList.Add(name);
             }
         }
-        foreach(string name in itemList)
-        {
-            Debug.Log(name + " haha");
-        }
+
     }
 }

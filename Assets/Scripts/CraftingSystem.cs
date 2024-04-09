@@ -128,17 +128,11 @@ public class CraftingSystem : MonoBehaviour
             InventorySystem.Instance.deleteMaterialFromInventory(blueprintToCraft.material2, blueprintToCraft.materialAmount2);
             InventorySystem.Instance.deleteMaterialFromInventory(blueprintToCraft.material3, blueprintToCraft.materialAmount3);
         }
-        StartCoroutine(waitForMaterialRemove());
         // After crafting, recalculate list item ( string )
-    }
-
-    IEnumerator waitForMaterialRemove()
-    {
-        yield return new WaitForSeconds(.3f);
         InventorySystem.Instance.reCalculateList();
         refreshNeededMaterials();
-
     }
+
 
 
     public void refreshNeededMaterials()

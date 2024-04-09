@@ -18,10 +18,7 @@ class HydrationBar : StatusBar
         }
         slider = GetComponent<Slider>();
     }
-    private void Start()
-    {
-        Initalize();
-    }
+
     public override void decrease(ref int current, int amount)
     {
         if (current - amount >= 0)
@@ -52,7 +49,7 @@ class HydrationBar : StatusBar
 
     public override void updateSlider(int current)
     {
-        slider.value = (float)current / max;
+        slider.value = (float)current / getMaxValue();
     }
 
     public override void setStatusText(int current)
