@@ -59,6 +59,7 @@ public class InventorySystem : MonoBehaviour
     private void Start()
     {
         PopulateSlot();
+        Cursor.visible = true;
     }
 
     private void Update()
@@ -68,9 +69,18 @@ public class InventorySystem : MonoBehaviour
             circlePoint.SetActive(!isInventoryOpen);
             handPoint.SetActive(!isInventoryOpen);
             InventoryScreenUI.SetActive(isInventoryOpen);
+            Cursor.visible = true;
+
+            //
+            SelectionManager.Instance.DisableSelection(); ;
+            SelectionManager.Instance.GetComponent<SelectionManager>().enabled = false;
+
         }
         else
+        {
+            Cursor.visible = false;
             InventoryScreenUI.SetActive(isInventoryOpen);
+        }
     }
 
 

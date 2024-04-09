@@ -87,6 +87,14 @@ public class SelectionManager : MonoBehaviour
             //onTarget = false;
 
         }
+    }
 
+    public void DisableSeleciton()
+    {
+        handIcon.SetActive(false);
+        circleIcon.SetActive(false);
+        interaction_info_UI.SetActive(false);
+
+        selec
     }
 }
