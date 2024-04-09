@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8901542127536035964}
   - component: {fileID: -222278406879097890}
   - component: {fileID: -2790129809374720483}
+  - component: {fileID: -5180028361874693622}
   m_Layer: 5
   m_Name: Stone
   m_TagString: Untagged
@@ -102,3 +103,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  deleteItemBoard: {fileID: 0}
+--- !u!114 &-5180028361874693622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290726202067169268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6eeefc442194b0bbe7dda394a23202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  functionalityText: {fileID: 0}
+  name: Stone
+  description: Hard solid nonmetallic mineral matter of which rock is made, especially
+    as a building material. "the houses are built of stone"
+  functionality: Craft
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
+  hydrationEffect: 0

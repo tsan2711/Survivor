@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6055734231975147890}
   - component: {fileID: -2893757642938655717}
   - component: {fileID: 1648074726688934955}
+  - component: {fileID: -5380787866560468504}
   m_Layer: 5
   m_Name: Sword
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  deleteItemBoard: {fileID: 0}
 --- !u!225 &1648074726688934955
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -102,3 +104,26 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-5380787866560468504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894268289706660351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6eeefc442194b0bbe7dda394a23202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  functionalityText: {fileID: 0}
+  name: Sword
+  description: A weapon with a long metal blade and a hilt with a hand guard, used
+    for thrusting or striking and now typically worn as part of ceremonial dress.
+  functionality: Weapon
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
+  hydrationEffect: 0

@@ -11,6 +11,7 @@ public class ControlDeleteBoard : MonoBehaviour
     void Start()
     {
         tickBtn.onClick.AddListener(delegate { pressTickBtn(); });
+        crossBtn.onClick.AddListener(delegate { pressCrossBtn(); });
     }
 
     private void pressTickBtn()
@@ -22,5 +23,10 @@ public class ControlDeleteBoard : MonoBehaviour
             CraftingSystem.Instance.refreshNeededMaterials();
             gameObject.SetActive(false);
         }
+    }
+    private void pressCrossBtn()
+    {
+        gameObject.SetActive(false);
+
     }
 }

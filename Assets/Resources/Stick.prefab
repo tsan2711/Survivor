@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  deleteItemBoard: {fileID: 0}
 --- !u!114 &-4060311290889357918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +122,7 @@ MonoBehaviour:
   name: Stick
   description: A thin piece of wood that has fallen or been cut from a tree.
   functionality: Crafting
-  isConsumable: 1
-  healthEffect: 10
-  caloriesEffect: 5
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
   hydrationEffect: 0

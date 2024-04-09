@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2448728863220211435}
   - component: {fileID: 3751927658031270476}
   - component: {fileID: 8314461390984623572}
+  - component: {fileID: -4311997005200596708}
   m_Layer: 5
   m_Name: Mushroom
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  deleteItemBoard: {fileID: 0}
 --- !u!225 &8314461390984623572
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -102,3 +104,26 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-4311997005200596708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857955968189860554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6eeefc442194b0bbe7dda394a23202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 0}
+  descriptionText: {fileID: 0}
+  functionalityText: {fileID: 0}
+  name: Mushroom
+  description: A fungal growth that typically takes the form of a domed cap on a
+    stalk, with gills on the underside of the cap.
+  functionality: Eat
+  isConsumable: 1
+  healthEffect: 0
+  caloriesEffect: 20
+  hydrationEffect: 0

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5205189918586262997}
   - component: {fileID: 1670148747179316521}
   - component: {fileID: 2775584896533419064}
+  - component: {fileID: -2111241597578310893}
+  - component: {fileID: 7146610456751530171}
   m_Layer: 5
   m_Name: Axe
   m_TagString: Untagged
@@ -95,4 +97,33 @@ MonoBehaviour:
   description: a tool typically used for chopping wood, usually a steel blade attached
     at a right angle to a wooden handle.
   functionality: chope wood
-  consumable: 0
+  isConsumable: 0
+  healthEffect: 0
+  caloriesEffect: 0
+  hydrationEffect: 0
+--- !u!114 &-2111241597578310893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346363944079621779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb1cb5c727064715b539a74f0f17540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  deleteItemBoard: {fileID: 0}
+--- !u!225 &7146610456751530171
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5346363944079621779}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
