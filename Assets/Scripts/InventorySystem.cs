@@ -20,6 +20,16 @@ public class InventorySystem : MonoBehaviour
     public Text itemFunctionality;
     //
 
+    // center point & hand
+    public GameObject circlePoint;
+    public GameObject handPoint;
+    //
+
+
+    // Delete Item Board
+    public GameObject deleteItemBoard;
+    //
+
     public List<GameObject> slotList = new List<GameObject>();
     public List<string> itemList = new List<string>();
 
@@ -53,8 +63,12 @@ public class InventorySystem : MonoBehaviour
 
     private void Update()
     {
-        if(isInventoryOpen)
+        if (isInventoryOpen)
+        {
+            circlePoint.SetActive(!isInventoryOpen);
+            handPoint.SetActive(!isInventoryOpen);
             InventoryScreenUI.SetActive(isInventoryOpen);
+        }
         else
             InventoryScreenUI.SetActive(isInventoryOpen);
     }
