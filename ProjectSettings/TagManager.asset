@@ -7,7 +7,7 @@ TagManager:
   - InventorySlot
   - PickUpItem
   - InventoryBin
-  - Equipment
+  - QuickSlot
   layers:
   - Default
   - TransparentFX

@@ -29,18 +29,18 @@ public class InventorySystem : MonoBehaviour
     // Delete Item Board
     public GameObject deleteItemBoard;
     //
-
+    // Add item to inventory
     public List<GameObject> slotList = new List<GameObject>();
     public List<string> itemList = new List<string>();
 
     private GameObject itemToAdd;
     private GameObject whatSlotToEquip;
-
+    //
     // Alert
     public GameObject alertBoard;
     public Text pickPopText;
     public Image pickPopImage;
-
+    //
     private void Awake()
     {
         isInventoryOpen = false;

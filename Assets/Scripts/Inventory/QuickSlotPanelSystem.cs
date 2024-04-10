@@ -30,7 +30,15 @@ public class QuickSlotPanelSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PopulateSlot();
+    }
+
+    private void PopulateSlot()
+    {
+        foreach(Transform slot in quickSlotPanel.transform)
+        {
+            quickSlotList.Add(slot.gameObject);
+        }
     }
 
     public bool checkIsFull()
