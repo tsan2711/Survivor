@@ -70,16 +70,15 @@ public class InventorySystem : MonoBehaviour
             handPoint.SetActive(!isInventoryOpen);
             InventoryScreenUI.SetActive(isInventoryOpen);
             Cursor.visible = true;
-
             //
-            SelectionManager.Instance.DisableSelection(); ;
             SelectionManager.Instance.GetComponent<SelectionManager>().enabled = false;
-
         }
         else
         {
             Cursor.visible = false;
             InventoryScreenUI.SetActive(isInventoryOpen);
+            SelectionManager.Instance.GetComponent<SelectionManager>().enabled = true;
+
         }
     }
 

@@ -47,38 +47,45 @@ public class SelectionManager : MonoBehaviour
             {
                 isPlayerInRange = interactable.playerInRange;
             }
-            if (interactable && isPlayerInRange)
+            if (!InventorySystem.Instance.isInventoryOpen)
             {
-                interaction_text.text = interactable.getName();
-                interaction_info_UI.SetActive(true);
-                //onTarget = true;
-                if (interactable.gameObject.CompareTag("PickUpItem"))
+                if (interactable && isPlayerInRange)
                 {
-                    handIcon.SetActive(true);
-                    circleIcon.SetActive(false);
+                    interaction_text.text = interactable.getName();
+                    interaction_info_UI.SetActive(true);
+                    //onTarget = true;
+                    if (interactable.gameObject.CompareTag("PickUpItem"))
+                    {
+                        handIcon.SetActive(true);
+                        circleIcon.SetActive(false);
 
-                } else
-                {
-                    handIcon.SetActive(false);
-                    circleIcon.SetActive(true);
+                    } else
+                    {
+                        handIcon.SetActive(false);
+                        circleIcon.SetActive(true);
+                    }
+
                 }
-
+                else
+                {
+                    interaction_info_UI.SetActive(false);
+                    circleIcon.SetActive(true);
+                    handIcon.SetActive(false);
+                    isPlayerInRange = false;
+                    //onTarget = false;
+                }
             }
             else
             {
-                interaction_info_UI.SetActive(false);
-                circleIcon.SetActive(true);
+                circleIcon.SetActive(false);
                 handIcon.SetActive(false);
-                isPlayerInRange = false;
-                //onTarget = false;
             }
-            if(Input.GetKeyDown(KeyCode.E) && isPlayerInRange)
+            if (Input.GetKeyDown(KeyCode.E) && isPlayerInRange)
             {
                 Debug.Log("Destroy GameObject");
                 Destroy(selectionTransform.gameObject);
                 selectionTransform = null;
             }
-
         }
         else
         {
@@ -87,14 +94,5 @@ public class SelectionManager : MonoBehaviour
             //onTarget = false;
 
         }
-    }
-
-    public void DisableSeleciton()
-    {
-        handIcon.SetActive(false);
-        circleIcon.SetActive(false);
-        interaction_info_UI.SetActive(false);
-
-        selec
     }
 }
