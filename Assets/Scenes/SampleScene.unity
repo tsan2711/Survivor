@@ -5687,8 +5687,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1015112993}
   - component: {fileID: 1015112994}
+  - component: {fileID: 1015112995}
   m_Layer: 0
-  m_Name: QuickSlotPanelSystem
+  m_Name: EquipmentSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5721,9 +5722,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48929021cdcef4830942b393917176ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1015112995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015112992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6685c7704754c4f98c8b9660768c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   quickSlotPanel: {fileID: 2061173010}
-  quickSlotList: []
-  weaponList: []
+  numberSlots: {fileID: 807000942}
+  index: 0
+  equipmentSlotList: []
 --- !u!1 &1023010275
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,14 +17,7 @@ public class InteractableObject : MonoBehaviour
     {
         if (playerInRange && !InventorySystem.Instance.checkIsInventoryFull())
         {
-            if (!QuickSlotPanelSystem.Instance.checkIsFull())
-            {
-                QuickSlotPanelSystem.Instance.AddItemToQuickSlot(getName());
-            } else
-            {
-                InventorySystem.Instance.AddItemToInventory(getName());
-            }
-            
+            InventorySystem.Instance.AddItemToInventory(getName());
         } else
         {
             // Write code to show text on User Interface to notice player that their inventory is full

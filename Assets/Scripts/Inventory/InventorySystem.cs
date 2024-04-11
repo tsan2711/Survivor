@@ -158,18 +158,6 @@ public class InventorySystem : MonoBehaviour
     public void deleteMaterialFromInventory(string materialName, int materialAmount)
     {
         int counterMaterial = materialAmount;
-        List<GameObject> templist = QuickSlotPanelSystem.Instance.quickSlotList;
-        for (int i = templist.Count - 1; i>= 0; i--)
-        {
-            if (templist[i].transform.childCount > 0)
-            {
-                if (templist[i].transform.GetChild(0).name == (materialName + "(Clone)") && counterMaterial != 0)
-                {
-                    DestroyImmediate(templist[i].transform.GetChild(0).gameObject);
-                    counterMaterial--;
-                }
-            }
-        }
         for (int i = slotList.Count - 1; i >= 0; i--)
         {
             if (slotList[i].transform.childCount > 0)
@@ -186,16 +174,8 @@ public class InventorySystem : MonoBehaviour
     public void reCalculateList()
     {
         itemList.Clear();
-        List<GameObject> tempList = QuickSlotPanelSystem.Instance.quickSlotList;
 
-        foreach (GameObject slot in tempList)
-        {
-            if (slot.transform.childCount > 0)
-            {
-                string name = slot.transform.GetChild(0).name.Replace("(Clone)", "");
-                itemList.Add(name);
-            }
-        }
+
         foreach (GameObject slot in slotList)
         {
             if(slot.transform.childCount > 0)

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     // --- Is this item trashable --- //
-
+    public bool isTrashable;
 
 
     // --- Item Info UI --- //
@@ -28,6 +28,8 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public int caloriesEffect;
     public int hydrationEffect;
 
+
+    // --- Equipment --- //
    
 
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -53,6 +55,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 consuming(healthEffect, caloriesEffect, hydrationEffect);
             }
         }
+
     }
 
     public void OnPointerUp(PointerEventData pointerEventData)
@@ -65,6 +68,11 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 InventorySystem.Instance.reCalculateList();
                 CraftingSystem.Instance.refreshNeededMaterials();
             }
+        }
+        if (pointerEventData.button == PointerEventData.InputButton.Left && !DragDrop.isDragging && !gameObject.transform.parent.gameObject.CompareTag("QuickSlot"))
+        {
+            gameObject.transform.SetParent(EquipmentSystem.Instance.FindNextEmptySlot().transform);
+            gameObject.transform.localPosition = new Vector2(0, 0);
         }
     }
 
