@@ -106,7 +106,6 @@ public class InventorySystem : MonoBehaviour
         else if (itemName == "Stone" || itemName == "Stick" || itemName == "Sword" || itemName == "Axe" || itemName == "Bow")
         {
             itemToAdd.transform.localScale = new Vector3(IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE);
-
         }
         itemList.Add(itemName);
         controlAlertBoard(itemName, itemToAdd.GetComponent<Image>().sprite);
@@ -116,7 +115,7 @@ public class InventorySystem : MonoBehaviour
         CraftingSystem.Instance.refreshNeededMaterials();
     }
 
-    private void controlAlertBoard(string itemName, Sprite itemToAdd)
+    public void controlAlertBoard(string itemName, Sprite itemToAdd)
     {
         alertBoard.SetActive(true);
         pickPopText.text = "Pick " + itemName;
@@ -159,6 +158,18 @@ public class InventorySystem : MonoBehaviour
     public void deleteMaterialFromInventory(string materialName, int materialAmount)
     {
         int counterMaterial = materialAmount;
+        List<GameObject> templist = QuickSlotPanelSystem.Instance.quickSlotList;
+        for (int i = templist.Count - 1; i>= 0; i--)
+        {
+            if (templist[i].transform.childCount > 0)
+            {
+                if (templist[i].transform.GetChild(0).name == (materialName + "(Clone)") && counterMaterial != 0)
+                {
+                    DestroyImmediate(templist[i].transform.GetChild(0).gameObject);
+                    counterMaterial--;
+                }
+            }
+        }
         for (int i = slotList.Count - 1; i >= 0; i--)
         {
             if (slotList[i].transform.childCount > 0)
@@ -175,7 +186,17 @@ public class InventorySystem : MonoBehaviour
     public void reCalculateList()
     {
         itemList.Clear();
-        foreach(GameObject slot in slotList)
+        List<GameObject> tempList = QuickSlotPanelSystem.Instance.quickSlotList;
+
+        foreach (GameObject slot in tempList)
+        {
+            if (slot.transform.childCount > 0)
+            {
+                string name = slot.transform.GetChild(0).name.Replace("(Clone)", "");
+                itemList.Add(name);
+            }
+        }
+        foreach (GameObject slot in slotList)
         {
             if(slot.transform.childCount > 0)
             {

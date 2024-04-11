@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuickSlotPanelSystem : MonoBehaviour
 {
+    const float IMAGEINVENTORY_SCALE = 0.7f;
+
     public static QuickSlotPanelSystem Instance { get; set; }
 
     public GameObject quickSlotPanel;
@@ -11,8 +14,8 @@ public class QuickSlotPanelSystem : MonoBehaviour
     private GameObject whatSlotToEquip;
     private GameObject weaponToEquip;
 
-    private List<GameObject> quickSlotList = new List<GameObject>();
-    private List<string> weaponList = new List<string>();
+    public List<GameObject> quickSlotList = new List<GameObject>();
+    public List<string> weaponList = new List<string>();
 
     void Start()
     {
@@ -37,7 +40,10 @@ public class QuickSlotPanelSystem : MonoBehaviour
     {
         foreach(Transform slot in quickSlotPanel.transform)
         {
-            quickSlotList.Add(slot.gameObject);
+            if (slot.gameObject.CompareTag("QuickSlot"))
+            {
+                quickSlotList.Add(slot.gameObject);
+            }
         }
     }
 
@@ -64,11 +70,27 @@ public class QuickSlotPanelSystem : MonoBehaviour
         }
         return new GameObject();
     }
-    public void AddItem(string itemName)
+    public void AddItemToQuickSlot(string itemName)
     {
         whatSlotToEquip = FindNextEmptySlot();
         weaponToEquip = Instantiate(Resources.Load<GameObject>(itemName), whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
+        if (itemName == "Mushroom")
+        {
+            weaponToEquip.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (itemName == "Stone" || itemName == "Stick" || itemName == "Sword" || itemName == "Axe" || itemName == "Bow")
+        {
+            weaponToEquip.transform.localScale = new Vector3(IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE);
+        }
         weaponToEquip.transform.SetParent(whatSlotToEquip.transform);
-        weaponList.Add(itemName);
+        string cleanName = itemName.Replace("(Clone)", "");
+
+        // add item to temp quickslot.
+        weaponList.Add(cleanName);
+        // Add item to main inventory
+        InventorySystem.Instance.controlAlertBoard(itemName, weaponToEquip.GetComponent<Image>().sprite);
+        InventorySystem.Instance.itemList.Add(cleanName);
+        CraftingSystem.Instance.refreshNeededMaterials();
     }
+
 }
