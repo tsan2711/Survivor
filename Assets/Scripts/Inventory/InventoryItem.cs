@@ -30,6 +30,8 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
 
     // --- Equipment --- //
+
+    public bool isEquipable;
    
 
     public void OnPointerEnter(PointerEventData pointerEventData)

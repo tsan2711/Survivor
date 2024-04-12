@@ -18,10 +18,7 @@ public class HandlePlayerMovement : MonoBehaviour
 
     public Vector3 velocity;
 
-    private void Start()
-    {
-        
-    }
+    public static bool isMoving;
 
     private void Update()
     {
@@ -35,6 +32,14 @@ public class HandlePlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.forward * z + transform.right * x;
+
+        if(move != Vector3.zero)
+        {
+            isMoving = true;
+        } else
+        {
+            isMoving = false;
+        }
 
          controller.Move(move * speed * Time.deltaTime);
 

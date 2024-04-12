@@ -8,6 +8,7 @@ TagManager:
   - PickUpItem
   - InventoryBin
   - QuickSlot
+  - Equipment
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Equipable
   - 
   - 
   - 

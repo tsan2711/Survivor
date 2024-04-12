@@ -16,12 +16,15 @@ public class EquipmentSystem : MonoBehaviour
     private Transform indexOfSlot;
     public int index;
     public static int equipIndex;
-
+    private GameObject whatSlotToAdd;
     public List<GameObject> equipmentSlotList = new List<GameObject>();
 
+    // Equip weapon
+    public GameObject toolHolder;
+    private GameObject itemSelected;
+    private bool equipable;
+    public static string currentEquipment;
 
-
-    private GameObject whatSlotToAdd;
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class EquipmentSystem : MonoBehaviour
     private void Update()
     {
         ControlSlotInput();
+        ControlEquipItem();
     }
 
     private void PopulateSlot()
@@ -75,7 +79,7 @@ public class EquipmentSystem : MonoBehaviour
                     indexOfSlot = null;
                     return;
                 }
-                index = 1;
+               index = 1;
                 indexOfSlot = numberSlots.transform.GetChild(index - 1);
                 if (index == 1)
                 {
@@ -85,6 +89,10 @@ public class EquipmentSystem : MonoBehaviour
                     indexOfSlot.GetChild(0).GetComponent<Text>().color = Color.white;
                     index = -1;
                 }
+                // Control equip Item
+                ControlEquipItem();
+                //
+
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -114,6 +122,10 @@ public class EquipmentSystem : MonoBehaviour
                     confirm = true;
                     indexOfSlot.GetChild(0).GetComponent<Text>().color = Color.white;
                     index = -2;
+                    // Control equip Item
+                    ControlEquipItem();
+                    //
+
                 }
             }
         }
@@ -144,7 +156,11 @@ public class EquipmentSystem : MonoBehaviour
                     indexOfSlot.GetChild(0).GetComponent<Text>().color = Color.white;
                     index = -3;
                 }
-            } 
+                // Control equip Item
+                ControlEquipItem();
+                //
+
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -173,6 +189,10 @@ public class EquipmentSystem : MonoBehaviour
                     indexOfSlot.GetChild(0).GetComponent<Text>().color = Color.white;
                     index = -4;
                 }
+                // Control equip Item
+                ControlEquipItem();
+                //
+
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -203,6 +223,10 @@ public class EquipmentSystem : MonoBehaviour
                     indexOfSlot.GetChild(0).GetComponent<Text>().color = Color.white;
                     index = -5;
                 }
+                // Control equip Item
+                ControlEquipItem();
+                //
+
             }
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
@@ -233,7 +257,38 @@ public class EquipmentSystem : MonoBehaviour
                     indexOfSlot.GetChild(0).GetComponent<Text>().color = Color.white;
                     index = -6;
                 }
+                // Control equip Item
+                ControlEquipItem();
+                //
+
             }
+        }
+    }
+
+    public void ControlEquipItem()
+    {
+        int amountChildToolHolder = toolHolder.transform.childCount;
+        if (isSelected && amountChildToolHolder == 0 )
+        {
+            Debug.Log(equipIndex);
+            Transform indexOfSlot = quickSlotPanel.transform.GetChild(equipIndex);
+            equipable = indexOfSlot.GetChild(0).GetComponent<InventoryItem>().isEquipable;
+            if (equipable){
+                string itemName = indexOfSlot.GetChild(0).name;
+                currentEquipment = itemName.Replace("(Clone)", "_Model");
+                itemSelected = Instantiate(Resources.Load<GameObject>(currentEquipment), new Vector3(), new Quaternion());
+                itemSelected.transform.SetParent(toolHolder.transform);
+                itemSelected.transform.localPosition = new Vector3(1, 0.4f, 2.75f);
+                itemSelected.transform.localRotation = Quaternion.Euler(85f, 190f, 100f);
+            } else
+            {
+                currentEquipment = "";
+            }
+        }
+        if (!isSelected && amountChildToolHolder > 0)
+        {
+            currentEquipment = "";
+            DestroyImmediate(toolHolder.transform.GetChild(0).gameObject);
         }
     }
 

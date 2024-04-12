@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6eeefc442194b0bbe7dda394a23202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTrashable: 0
   nameText: {fileID: 0}
   descriptionText: {fileID: 0}
   functionalityText: {fileID: 0}
@@ -127,3 +128,4 @@ MonoBehaviour:
   healthEffect: 0
   caloriesEffect: 0
   hydrationEffect: 0
+  isEquipable: 1
