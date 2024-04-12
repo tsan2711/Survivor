@@ -15,6 +15,10 @@ public class SelectionManager : MonoBehaviour
     public GameObject interaction_info_UI;
     public Text interaction_text;
     private bool isPlayerInRange;
+
+
+    public GameObject selectedTree;
+    public GameObject chopHolder;
     // Start is called before the first frame update
 
     void Start()
@@ -43,6 +47,25 @@ public class SelectionManager : MonoBehaviour
         {
             var selectionTransform = hit.transform;
             InteractableObject interactable = selectionTransform.GetComponent<InteractableObject>();
+
+
+            ChopableTree chopableTree = selectionTransform.gameObject.GetComponent<ChopableTree>();
+            if(chopableTree && chopableTree.playerInRange)
+            {
+                chopableTree.canBeChopped = true;
+                selectedTree = chopableTree.gameObject;
+                chopHolder.SetActive(true);
+            } else
+            {
+                if(selectedTree != null)
+                {
+                    selectedTree.gameObject.GetComponent<ChopableTree>().canBeChopped = false;
+                    selectedTree = null;
+                }
+                chopHolder.gameObject.SetActive(false);
+            }
+
+
             if (interactable)
             {
                 isPlayerInRange = interactable.playerInRange;
@@ -80,7 +103,7 @@ public class SelectionManager : MonoBehaviour
                 circleIcon.SetActive(false);
                 handIcon.SetActive(false);
             }
-            if (Input.GetKeyDown(KeyCode.E) && isPlayerInRange)
+            if (Input.GetKeyDown(KeyCode.E) && isPlayerInRange && selectionTransform.gameObject.CompareTag("PickUpItem"))
             {
                 Debug.Log("Destroy GameObject");
                 Destroy(selectionTransform.gameObject);

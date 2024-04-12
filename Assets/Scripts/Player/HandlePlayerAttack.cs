@@ -15,6 +15,7 @@ public class HandlePlayerAttack : MonoBehaviour
     void Update()
     {
         controlPlayerAttack();
+        
     }
 
     private void controlPlayerAttack()
@@ -30,11 +31,21 @@ public class HandlePlayerAttack : MonoBehaviour
                 }
                 StartCoroutine("waitForNextAttack");
             }
+            exploitTree();
         }
     }
     IEnumerator waitForNextAttack()
     {
         yield return new WaitForSeconds(attackSpeed);
         isPlayerAttack = true;
+    }
+    private void exploitTree()
+    {
+        GameObject selectedTree = SelectionManager.Instance.selectedTree;
+        if (selectedTree != null && Input.GetMouseButtonDown(0))
+        {
+            selectedTree.GetComponent<ChopableTree>().GetHit(1);
+        }
+
     }
 }

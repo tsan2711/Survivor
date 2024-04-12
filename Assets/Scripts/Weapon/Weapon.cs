@@ -30,4 +30,6 @@ public class Weapon : MonoBehaviour
         }
         anim.SetInteger("state", (int)state);
     }
+
+
 }

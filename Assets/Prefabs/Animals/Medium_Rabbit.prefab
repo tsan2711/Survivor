@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 9212262982259646307}
   - component: {fileID: 3809663451714962801}
   - component: {fileID: 4735582259368366003}
+  - component: {fileID: -5485237772574345441}
   m_Layer: 0
   m_Name: Medium_Rabbit
   m_TagString: Untagged
@@ -651,6 +652,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 1.18, z: 4}
   m_Center: {x: 0.2, y: 0.33, z: 0}
+--- !u!114 &-5485237772574345441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141484462338538439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6872b3639a06d4e9ea2d7c438e9acecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Rabbit
+  playerInRange: 0
 --- !u!1 &4311930899179228044
 GameObject:
   m_ObjectHideFlags: 0

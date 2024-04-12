@@ -99,13 +99,12 @@ public class InventorySystem : MonoBehaviour
         whatSlotToEquip = findNextEmptySlot();
         itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
         itemToAdd.transform.SetParent(whatSlotToEquip.transform);
-        if(itemName == "Mushroom")
-        {
-            itemToAdd.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (itemName == "Stone" || itemName == "Stick" || itemName == "Sword" || itemName == "Axe" || itemName == "Bow")
+        if (itemName == "Stone" || itemName == "Stick" || itemName == "Sword" || itemName == "Axe" || itemName == "Bow" || itemName == "Log")
         {
             itemToAdd.transform.localScale = new Vector3(IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE, IMAGEINVENTORY_SCALE);
+        } else
+        {
+            itemToAdd.transform.localScale = new Vector3(1, 1, 1);
         }
         itemList.Add(itemName);
         controlAlertBoard(itemName, itemToAdd.GetComponent<Image>().sprite);
